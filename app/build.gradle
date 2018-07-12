@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "gmlim.workmanager.sample.workmanagersample"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    def work_version = "1.0.0-alpha04"
+
+    // 필수1 , java 를 사용한다면 다음의 줄을 추가 하세요
+//    implementation "android.arch.work:work-runtime:$work_version"
+
+    // 필수2 , kotlin 을 사용한다면 다음의 줄을 추가 하세요
+    implementation "android.arch.work:work-runtime-ktx:$work_version"
+
+    // 옵션 , Firebase JobDispatcher 를 사용하려면 다음의 줄을 추가 하세요
+//    implementation "android.arch.work:work-firebase:$work_version"
+}
